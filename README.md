@@ -1,30 +1,56 @@
-# Mobile app website
+# Rucript — Mobile App Website
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+A vibrant landing page for **Rucript**, a notes/productivity mobile app. Centerpiece is an animated CSS phone mockup showing the app's notes UI (documents, folders, reminders, stats), wrapped in a colorful gradient backdrop with staggered load animations — plus a feature grid, testimonials-style cards, and download CTAs.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/gileb64375-5584s-projects/v0-mobile-app-website)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/projects/tYhzPAtoKkB)
+**Live demo:** https://girishlade111.github.io/mobile-app-website/
 
-## Overview
+## Features
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+- **Animated phone mockup** — pure-CSS phone frame (status bar, dynamic-island style notch) rendering a notes-app UI: folders, document cards, reminder chips, activity stats
+- **Gradient hero backdrop** — animated floating blurred gradient blobs over a cyan→blue→purple gradient
+- **Staggered entrance animations** — sections fade/slide in on load with sequenced delays
+- **Feature grid** — document editing, folders/organization, reminders, analytics, privacy cards with lucide icons
+- **Responsive layout** — mobile-first, adapts from phones to wide desktop
+- **Static-export ready** — builds to plain HTML/CSS/JS (`output: 'export'`), deployable anywhere including GitHub Pages
 
-## Deployment
+## Tech stack
 
-Your project is live at:
+- **Next.js 15** (App Router, static export) + **React 19** + TypeScript
+- **Tailwind CSS** + custom keyframe animations in `app/globals.css`
+- **Geist** font, **lucide-react** icons, **@vercel/analytics**
 
-**[https://vercel.com/gileb64375-5584s-projects/v0-mobile-app-website](https://vercel.com/gileb64375-5584s-projects/v0-mobile-app-website)**
+## Quick start
 
-## Build your app
+```bash
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # outputs to ./out
+```
 
-Continue building your app on:
+## Project structure
 
-**[https://v0.app/chat/projects/tYhzPAtoKkB](https://v0.app/chat/projects/tYhzPAtoKkB)**
+```
+app/
+  page.tsx        # The whole landing page (hero + phone mockup + features)
+  layout.tsx      # Root layout + metadata
+  globals.css     # Tailwind + custom animations (float, fade, pulse)
+components/
+  ui/button.tsx
+  ui/badge.tsx
+  theme-provider.tsx
+public/           # Placeholder images
+next.config.mjs   # output: 'export', images unoptimized
+```
 
-## How It Works
+## Notes
 
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+- `basePath: '/mobile-app-website'` is set in `next.config.mjs` so asset URLs resolve under the GitHub Pages subpath. Remove it if you deploy to a root domain or Vercel.
+- Next.js was bumped from 15.2.4 to 15.2.8 for the React2Shell (CVE-2025-55182) security patch.
+
+## Original v0 project
+
+This repository was initialized from a [v0](https://v0.app) project. Any changes made in the v0 chat are automatically synced here.
+
+---
+
+Built by Girish Lade — https://ladestack.in
